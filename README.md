@@ -1,5 +1,5 @@
 # WeatherApp
-Weather App gives you the weather in real time in any given place on the planet, displayed on a map(coded with Express.js).
+WeatherApp gives you the weather in real time in any given place on the planet, displayed on a map(coded with Express.js).
 
 
 **Features:**
