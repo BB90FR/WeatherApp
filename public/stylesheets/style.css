@@ -1,0 +1,58 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00b7ff;
+}
+
+.empty {
+  font-size: 16px;
+  color: #ffc107;
+}
+
+.logout {
+  margin-right: 15px;
+}
+
+.home {
+  background-image: url("/images/background.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  color: #ffffff;
+  text-shadow: 1px 1px 1px black;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navItem {
+  margin-bottom: 10px;
+}
+
+.get_started {
+  margin-bottom: 70px;
+}
+
+.header {
+  margin-bottom: 50px;
+  color: #ffffff;
+}
+
+.deletepic {
+  color: #ffbf43;
+}
+
+#worldmap {
+  height: 360px;
+}
+
+#username {
+  display: flex;
+  justify-content: space-between;
+}
