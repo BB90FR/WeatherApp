@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/a85646440e.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <title>WeatherApp</title>
+</head>
+
+<body>
+
+
+    <!-- HEADER -->
+    
+    <div class="row">
+        <nav class="col-12 header navbar navbar-light bg-dark">
+            <span class="ms-3">Weather App</span>
+            <h6 class="mx-auto my-auto">Welcome <%= user.username %> ! <i class="far fa-smile"></i></h6>
+            <a class="logout" href="/users/log-out">Logout</a>
+        </nav>
+    </div>
+
+    <main class="container">
+
+        <!-- GRID -->
+
+        <div class="row">
+
+            <!-- New city section -->
+            <div class="col-12 offset-md-6 col-md-6">
+                <nav class="navbar navbar-light">
+                    <form method="POST" action="/add-city" class="w-100 d-flex">
+                        <input class="form-control" name="city" value="" type="search" placeholder="Enter City Name" aria-label="Search">
+                        <button class="btn btn-warning" type="submit">Add</button>
+                    </form>
+                </nav>
+            </div>
+            
+            
+            <!-- Map section -->
+            <div class="col-12 col-md-6">
+                <div>
+                    <div id="worldmap"></div>
+                </div>
+            </div>
+            
+            <!-- City list section -->
+            <div class="col-12 col-md-6">
+                <ul class="mt-3 list-group">
+
+                    <%
+                    if(data.cod == 404) {
+                    %>
+                    <div>
+                        <h6 class="font-weight-bold text-danger" >City not found.</h6>
+                    </div>    
+                    <% } %>
+
+                    <%
+                    if(cityList.length < 1) {
+                    %>
+                    <div>
+                        <h6 class="font-weight-bold text-info" >No cities added.</h6>
+                    </div>    
+                    <% } %>
+                    <a href="/update-data" class="text-decoration-none mb-3 text-center text-primary"><span>Update data <i class="fas fa-sync-alt"></i></span></a>
+                    <%
+                    for(let i = 0; i < cityList.length; i++) {
+                    %>
+                    <li data-country="<%= cityList[i].country %>" data-city="<%= cityList[i].city %>" data-lat="<%= cityList[i].lat %>" data-lon="<%= cityList[i].lon %>" class="pt-1 pb-1 list-group-item d-flex justify-content-between align-items-center">
+                        <%= cityList[i].city %>, <%= cityList[i].country %>
+                        <div class="d-flex justify-content-around align-items-center">
+                            <span><%= cityList[i].weather %></span>
+                            <img src="<%= cityList[i].img %>" alt="" class="ms-2">
+                            <span class="ms-2 badge rounded-pill bg-warning text-dark"><%= cityList[i].maxTemp %>°C</span>
+                            <span class="ms-2 badge rounded-pill bg-secondary"><%= cityList[i].minTemp %>°C</span>
+                        </div>
+                        <a href="/delete-city?id=<%= cityList[i]._id %>"><i class="deletepic far fa-times-circle"></i></a>
+                    </li>
+                    <% } %>
+
+                </ul>
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+
+    <!-- SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <script src="/javascripts/script.js"></script>
+
+</body>
+
+</html>
