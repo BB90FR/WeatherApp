@@ -10,4 +10,4 @@ Weather App gives you the weather in real time in any given place on the planet,
 - Save any number of cities
 - Weather data come from the Open Weather Map API
 
-Warning: logging in with a different user will still display the cities you saved with the first user. I designed this app just to have fun with a weather API, I did not spend time on the sign-in logic.
+Warning: logging in with a different user will still display the cities you saved with the first user. I designed this app just to have fun with a weather API, I did not focus on the sign-in logic.
