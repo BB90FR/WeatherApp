@@ -3,6 +3,8 @@ WeatherApp gives you the weather in real time in any given place on the planet, 
 
 See it in action: https://thisistheweatherman.herokuapp.com/
 
+_To use locally: 'npm start' within the root directory of the project_
+
 
 **Features:**
 
